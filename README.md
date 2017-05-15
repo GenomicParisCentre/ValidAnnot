@@ -1,14 +1,18 @@
+# ValidAnnot
+
 These scripts aim at facilitating all the annotation formatting steps before going into an RNASeq analysis.
 It is an on going suite.
+
+## Getting Started
 
 To be defined before launching the scripts:
 => validannot_env.py
 
 # validannot_env.py
-# Define paths to all the directories needed
-# Needs to be included in all the validannot scripts
-# These paths are required :
+Define paths to all the directories needed
+Needs to be included in all the validannot scripts
 
+These paths are required :
 gff3_path = ".../gff3/"
 dna_fasta_path = ".../dna_fasta/"
 cdna_fasta_path = ".../cdna_fasta/"
@@ -16,54 +20,61 @@ ncrna_fasta_path = ".../ncrna_fasta/"
 gtf_path = ".../gtf/"
 log_path = ".../log/"
 
+### Prerequisites
+
+python 2.7
+biopython
+docker
 
 
-#################################
-retrieve_files_from_ensembl.py
-#################################
+### retrieve_files_from_ensembl.py
+
 
 # retrieve_files_from_ensembl.py
-# Retrieve fasta and annotation files from Ensembl ftp  (ensembl.org or ensemblgenomes.org)
-# Sophie Lemoine
-# Genomicpariscentre
+Retrieve fasta and annotation files from Ensembl ftp  (ensembl.org or ensemblgenomes.org)
 
-# Usage : python retrieve_files_from_ensembl.py -o organism_ensembl -e ensemblversion -f file type -t generic -v
+``
+python retrieve_files_from_ensembl.py -o organism_ensembl -e ensemblversion -f file type -t generic -v`
 
+```
 # Arguments :
-# -o or --organism         = Bos_taurus, Mus_musculus, Homo_sapiens
-# -t or type               = plants, fungi, metazoa, bacteria, protists, generic
-# -e or --ensemblversion   = 83
-# -f or --files            = all, gff3, gtf, dna_fasta, cdna_fasta, ncrna_fasta (default=all)
-# -v or --verbose
+ -o or --organism         = Bos_taurus, Mus_musculus, Homo_sapiens
+ -t or type               = plants, fungi, metazoa, bacteria, protists, generic
+ -e or --ensemblversion   = 83
+ -f or --files            = all, gff3, gtf, dna_fasta, cdna_fasta, ncrna_fasta (default=all)
+ -v or --verbose
 
-# Exemple :
-# python retrieve_files_from_ensembl.py -o Bos_taurus -e 83 -f all -t generic -v
+``
+python retrieve_files_from_ensembl.py -o Bos_taurus -e 83 -f all -t generic -v`
 
-# Results :
+```
 
-#####################
-modify_ensembl_gff.py
-#####################
+
+
+### modify_ensembl_gff.py
+
 
 # modify_ensembl_gff.py
-# Format Ensembl gff3 files to make real and clean gff3 files with chromosome only if desired
-# Sophie Lemoine
-# Genomicpariscentre
 
-# Usage : python modify_ensembl_gff.py -o Ensembl organism name -e Ensembl version -c y -v
+Format Ensembl gff3 files to make real and clean gff3 files with chromosome only if desired
 
+```
+python modify_ensembl_gff.py -o Ensembl organism name -e Ensembl version -c y -v
+
+```
 # Arguments :
-# -o or --organism    	 Ensembl organism name Ex: Mus_musculus
-# -e or --ensemblversion Ensembl version Ex: 84
-# -c or --chronly        Chromosome only : y
-# -v or --verbose
+-o or --organism    	 Ensembl organism name Ex: Mus_musculus
+-e or --ensemblversion Ensembl version Ex: 84
+-c or --chronly        Chromosome only : y
+-v or --verbose
 
-# Exemple :
-# python modify_ensembl_gff.py -o Mus_musculus -e 84 -c y -v
+```
+python modify_ensembl_gff.py -o Mus_musculus -e 84 -c y -v
 
-#####################
-select_ensembl_fasta_from_gffid_ensembl.py
-#####################
+```
+
+### select_ensembl_fasta_from_gffid_ensembl.py
+
 
 # select_ensembl_fasta_from_gffid_ensembl.py
 # Selects only the official chromosome sequences in a fasta file from an only_chr_Xxxx_xxxx_ensNN_sgdb.gff file
